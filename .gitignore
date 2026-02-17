@@ -40,6 +40,6 @@ env/
 *.swo
 *~
 
-# Data files (optional - uncomment if you want to exclude large data files)
+# data files (optional - uncomment if you want to exclude large data files)
 # *.csv
 # *.parquet
