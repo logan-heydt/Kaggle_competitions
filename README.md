@@ -27,6 +27,17 @@ Exploratory machine learning project using the House Prices dataset (Ames, Iowa)
 - `House_Price/src/house_price_pred.ipynb` - Main analysis notebook
 - `House_Price/data/` - Training and test datasets
 
+### 3. [Wine Quality Prediction](./Wine_Quality/)
+Ordinal regression project using wine quality dataset from Kaggle. Predicts wine quality ratings based on physicochemical properties with optimized threshold classification.
+
+**Models used:**
+- XGBoost with threshold optimization
+
+**Key files:**
+- `Wine_Quality/src/Wine_quality_pred.ipynb` - Main analysis notebook
+- `Wine_Quality/src/exploration.ipynb` - Exploratory data analysis
+- `Wine_Quality/data/` - Training and test datasets
+
 ## Repository Structure
 
 ```
@@ -41,6 +52,10 @@ Kaggle_competitions/
 │   ├── src/
 │   ├── README.md
 │   └── requirements.txt
+├── Wine_Quality/
+│   ├── data/
+│   ├── src/
+│   └── README.md
 ├── README.md
 └── .gitignore
 ```
