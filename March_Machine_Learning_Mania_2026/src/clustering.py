@@ -7,9 +7,9 @@ import numpy as np
 
 def group_pca(df):
 
-    offensive_cols = ['fg_pct', 'fg3_pct', 'ft_pct', 'off_rating', 'efg', 'tov_rate', 'Ast']
-    defensive_cols = ['opp_fg_pct', 'opp_fg3_pct', 'opp_ft_pct', 'def_rating', 'opp_tov_rate', 'Blk', 'Stl']
-    rebounding_cols = ['OR', 'DR']
+    offensive_cols = ['fg_pct', 'fg3_pct', 'ft_pct', 'off_rating', 'efg', 'tov_rate', 'ast_per_game', 'points_per_game']
+    defensive_cols = ['opp_fg_pct', 'opp_fg3_pct', 'opp_ft_pct', 'def_rating', 'opp_tov_rate', 'blk_per_game', 'stl_per_game', 'pf_per_game', 'opp_points_per_game']
+    rebounding_cols = ['orb_margin_pg', 'drb_margin_pg']
     overall_cols = ['win_pct', 'possessions_avg'] + offensive_cols + defensive_cols + rebounding_cols
 
     grouped_cols = {
