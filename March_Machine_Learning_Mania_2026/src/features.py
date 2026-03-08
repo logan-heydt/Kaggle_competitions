@@ -65,6 +65,17 @@ def get_summarized_season(df: pd.DataFrame, seeds: pd.DataFrame) -> pd.DataFrame
 
     # ---- 7) basic rates
     season["win_pct"] = season["is_win"] / season["games"]
+    season["points_per_game"] = season['Score'] / season["games"]
+    season["blk_per_game"] = season['Blk'] / season["games"]
+    season["ast_per_game"] = season['Ast'] / season["games"]
+    season["stl_per_game"] = season['Stl'] / season["games"]
+    season["pf_per_game"] = season['PF'] / season["games"]
+
+    season["opp_points_per_game"] = season['opp_Score'] / season["games"]
+    season["opp_blk_per_game"] = season['opp_Blk'] / season["games"]
+    season["opp_ast_per_game"] = season['opp_Ast'] / season["games"]
+    season["opp_stl_per_game"] = season['opp_Stl'] / season["games"]
+    season["opp_pf_per_game"] = season['opp_PF'] / season["games"]
 
     # shooting % from totals (correct weighting)
     season["fg_pct"]  = season["FGM"]  / season["FGA"]

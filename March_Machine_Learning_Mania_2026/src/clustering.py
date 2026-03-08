@@ -1,4 +1,8 @@
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+import pandas as pd
+import numpy as np
 
 
 def group_pca(df):
