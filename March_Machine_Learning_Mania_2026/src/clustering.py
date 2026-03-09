@@ -48,3 +48,19 @@ def group_pca(df):
     df_pca = df.join(reduced)
 
     return reduced, df_pca, pca_group_dict
+
+
+def add_team_clusters(df):
+    
+    reduced_df, pca_group_dict, fitted_objects = group_pca(df)
+
+    n_clusters=5
+    random_state=42
+
+    pca_features = reduced_df.values
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
+    cluster_labels = kmeans.fit_predict(pca_features)
+    out = df.copy()
+    out["team_cluster"] = cluster_labels
+    
+    return out
