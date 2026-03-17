@@ -27,52 +27,70 @@ Key challenges include:
 March_Machine_Learning_Mania_2026/
 ├── data/               # Competition datasets (teams, games, seeds, etc.)
 ├── src/                # Source code and notebooks
+│   ├── model.ipynb         # Baseline model: XGBoost + LR blended ensemble
+│   ├── model_advanced.ipynb# Advanced stacked ensemble (LightGBM + XGBoost + LR)
+│   ├── exploration.ipynb   # Exploratory data analysis
+│   ├── pipeline.py         # Reusable end-to-end pipeline module
+│   ├── features.py         # Feature engineering utilities
+│   └── clustering.py       # Grouped PCA and KMeans team clustering
+├── submissions/        # Generated submission CSV files
+├── prev_year_winner/   # Reference notebook from a prior year's winning approach
 ├── README.md           # This file
-├── requirements.txt    # Python dependencies
-└── LICENSE             # License information
+└── .gitattributes
 ```
 
 ---
 
 ## 📊 Dataset
 
-The competition provides several datasets including:
+The competition provides datasets covering both Men's (M) and Women's (W) tournaments:
 
-- Historical regular season and tournament game results
-- Team box scores and statistics
-- Tournament seeds and brackets
-- Conference information
-- Coach data
-- Geographic data
+- Regular season and tournament compact & detailed results
+- Tournament seeds, brackets, and slot assignments
+- Massey Ordinal ranking systems (multiple rating systems per season)
+- Team conference affiliations and conference tournament results
+- Coach data (tenures and historical records)
+- Game cities (for neutral-site detection)
+- Sample submission files for Stage 1 and Stage 2
 
 ---
 
 ## 🔧 Approach
 
-The typical workflow involves:
+### Feature Engineering (`features.py`, `clustering.py`)
 
-1. **Data Exploration and Cleaning**
-   - Understanding the data structure and relationships
-   - Handling missing values
-   - Merging multiple data sources
+- **Season statistics**: per-game averages for all box-score categories (points, FG%, 3P%, FT%, assists, turnovers, rebounds, blocks, steals, fouls) for both team and opponent
+- **Derived metrics**: offensive/defensive rating, effective field goal %, turnover rate, true shooting %, possessions, strength of schedule (SOS)
+- **ELO ratings**: custom ELO system built from all historical games, carried across seasons with decay
+- **Massey Ordinals**: individual ranks from POM, SAG, MOR, COL, DOL, AP systems plus consensus mean/median/std
+- **Tournament seed**: numerical seed extracted per team per season
+- **Pythagorean win expectation** (advanced model): efficiency-based expected win rate
+- **Coach features** (advanced model): tenure, career tournament win rate
+- **Conference features** (advanced model): Power 6 membership, conference tournament wins/losses before NCAA tournament
+- **Neutral-site record** (advanced model): win rate at neutral venues using game city data
+- **Grouped PCA** (`clustering.py`): dimensionality reduction applied separately to Offense, Defense, Rebounding, and Overall feature groups
+- **KMeans team clustering** (`clustering.py`): playstyle cluster labels derived from PCA components
 
-2. **Feature Engineering**
-   - Team performance metrics (win percentage, strength of schedule)
-   - Rating systems (ELO, RPI, etc.)
-   - Momentum indicators
-   - Historical matchup data
-   - Tournament seed information
+### Models
 
-3. **Model Development**
-   - Baseline models for comparison
-   - Advanced models (Gradient Boosting, Neural Networks)
-   - Ensemble methods
-   - Cross-validation strategies
+#### Baseline (`model.ipynb`)
+- **XGBoost** classifier + **Logistic Regression**, blended by weighted average
+- Platt-scaling calibration on a held-out calibration season
+- Walk-forward cross-validation (leak-free, PCA/KMeans refit each fold)
+- Tournament games up-weighted 2× vs regular season games
 
-4. **Evaluation**
-   - Log loss metric (competition metric)
-   - Calibration analysis
-   - Bracket simulation
+#### Advanced (`model_advanced.ipynb`)
+- **LightGBM** + **XGBoost** + **Logistic Regression** base learners
+- Stacked meta-learner (Logistic Regression on out-of-fold predictions)
+- Isotonic regression calibration for well-calibrated probability outputs
+- Separate Men's and Women's models
+- Optuna hyperparameter tuning (optional, ~15–25 min)
+
+### Evaluation
+
+- **Primary metric**: Log loss (competition metric)
+- **Secondary metric**: Brier score (used for Optuna tuning in the advanced model)
+- Walk-forward cross-validation across multiple seasons
 
 ---
 
@@ -91,21 +109,28 @@ The typical workflow involves:
    pip install -r requirements.txt
    ```
 3. Download the competition data from Kaggle and place it in the `data/` directory
-4. Run the notebooks in the `src/` directory
+4. Run the notebooks in the `src/` directory:
+   - Start with `exploration.ipynb` for EDA
+   - Run `model.ipynb` for the baseline submission
+   - Run `model_advanced.ipynb` for the full stacked ensemble
 
 ---
 
 ## 📈 Results
 
-Results and model performance will be documented here as the project progresses.
+| Model | Submission File | Notes |
+|---|---|---|
+| Baseline (XGBoost + LR) | `submissions/submission_2026.csv` | Blended ensemble, Platt calibration |
+| Advanced (LightGBM + XGBoost + LR) | `submissions/submission_advanced_2026.csv` | Stacked meta-learner, isotonic calibration |
 
 ---
 
 ## 📝 Notes
 
-- The competition follows the NCAA tournament structure with single-elimination games
-- Historical data patterns may not always predict tournament outcomes (upsets are common!)
-- The evaluation metric is log loss, which rewards well-calibrated probability predictions
+- Both Men's and Women's tournament matchups are included in the submission
+- The competition follows the NCAA single-elimination tournament structure — upsets are common
+- The evaluation metric is log loss, which heavily rewards well-calibrated probabilities
+- Historical data patterns from the `prev_year_winner/` folder informed several feature ideas
 
 ---
 
