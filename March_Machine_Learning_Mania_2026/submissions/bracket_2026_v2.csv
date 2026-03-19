@@ -1,0 +1,68 @@
+Slot,Round,Team1,Team2,Winner,WinProb
+X16,0,Lehigh,Prairie View,Prairie View,1.0
+Y11,0,Miami OH,SMU,Miami OH,1.0
+Y16,0,Howard,UMBC,Howard,1.0
+Z11,0,NC State,Texas,Texas,1.0
+R1W1,1,Duke,Siena,Duke,0.9332
+R1W2,1,Connecticut,Furman,Connecticut,0.9282
+R1W3,1,Michigan St,N Dakota St,Michigan St,0.9217
+R1W4,1,Kansas,Cal Baptist,Kansas,0.8834
+R1W5,1,St John's,Northern Iowa,St John's,0.8346
+R1W6,1,Louisville,South Florida,Louisville,0.6711
+R1W7,1,UCLA,UCF,UCLA,0.6034
+R1W8,1,Ohio St,TCU,Ohio St,0.5419
+R1X1,1,Florida,Prairie View,Florida,0.9351
+R1X2,1,Houston,Idaho,Houston,0.9291
+R1X3,1,Illinois,Penn,Illinois,0.9219
+R1X4,1,Nebraska,Troy,Nebraska,0.8983
+R1X5,1,Vanderbilt,McNeese St,Vanderbilt,0.8672
+R1X6,1,North Carolina,VCU,North Carolina,0.7359
+R1X7,1,St Mary's CA,Texas A&M,St Mary's CA,0.6941
+R1X8,1,Clemson,Iowa,Clemson,0.5692
+R1Y1,1,Michigan,Howard,Michigan,0.9351
+R1Y2,1,Iowa St,Tennessee St,Iowa St,0.9282
+R1Y3,1,Virginia,Wright St,Virginia,0.9219
+R1Y4,1,Alabama,Hofstra,Alabama,0.8956
+R1Y5,1,Texas Tech,Akron,Texas Tech,0.8409
+R1Y6,1,Tennessee,Miami OH,Tennessee,0.7155
+R1Y7,1,Kentucky,Santa Clara,Kentucky,0.6095
+R1Y8,1,Georgia,St Louis,St Louis,0.5091
+R1Z1,1,Arizona,LIU Brooklyn,Arizona,0.9333
+R1Z2,1,Purdue,Queens NC,Purdue,0.9282
+R1Z3,1,Gonzaga,Kennesaw,Gonzaga,0.9223
+R1Z4,1,Arkansas,Hawaii,Arkansas,0.8951
+R1Z5,1,Wisconsin,High Point,Wisconsin,0.8403
+R1Z6,1,BYU,Texas,BYU,0.7714
+R1Z7,1,Miami FL,Missouri,Miami FL,0.6814
+R1Z8,1,Villanova,Utah St,Villanova,0.591
+R2W1,2,Duke,Ohio St,Duke,0.8898
+R2W2,2,Connecticut,UCLA,Connecticut,0.7961
+R2W3,2,Michigan St,Louisville,Michigan St,0.6259
+R2W4,2,Kansas,St John's,St John's,0.5
+R2X1,2,Florida,Clemson,Florida,0.753
+R2X2,2,Houston,St Mary's CA,Houston,0.6564
+R2X3,2,Illinois,North Carolina,Illinois,0.6222
+R2X4,2,Nebraska,Vanderbilt,Nebraska,0.5282
+R2Y1,2,Michigan,St Louis,Michigan,0.879
+R2Y2,2,Iowa St,Kentucky,Iowa St,0.787
+R2Y3,2,Virginia,Tennessee,Virginia,0.7717
+R2Y4,2,Alabama,Texas Tech,Alabama,0.5218
+R2Z1,2,Arizona,Villanova,Arizona,0.81
+R2Z2,2,Purdue,Miami FL,Purdue,0.6659
+R2Z3,2,Gonzaga,BYU,Gonzaga,0.7319
+R2Z4,2,Arkansas,Wisconsin,Arkansas,0.6057
+R3W1,3,Duke,St John's,Duke,0.7974
+R3W2,3,Connecticut,Michigan St,Connecticut,0.5153
+R3X1,3,Florida,Nebraska,Florida,0.6582
+R3X2,3,Houston,Illinois,Houston,0.5231
+R3Y1,3,Michigan,Alabama,Michigan,0.7883
+R3Y2,3,Iowa St,Virginia,Virginia,0.5076
+R3Z1,3,Arizona,Arkansas,Arizona,0.7852
+R3Z2,3,Purdue,Gonzaga,Purdue,0.5507
+R4W1,4,Duke,Connecticut,Duke,0.7345
+R4X1,4,Florida,Houston,Houston,0.5414
+R4Y1,4,Michigan,Virginia,Michigan,0.7565
+R4Z1,4,Arizona,Purdue,Arizona,0.6433
+R5WX,5,Duke,Houston,Duke,0.7495
+R5YZ,5,Michigan,Arizona,Arizona,0.508
+R6CH,6,Duke,Arizona,Duke,0.5135

@@ -1,10 +1,16 @@
 import pandas as pd
+import os
+
+# Paths relative to this script's location (works regardless of working directory)
+SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(SRC_DIR, '..', 'data')
+SUB_DIR  = os.path.join(SRC_DIR, '..', 'submissions')
 
 # Load data
-seeds_df = pd.read_csv('../data/MNCAATourneySeeds.csv')
-teams_df = pd.read_csv('../data/MTeams.csv')
-slots_df = pd.read_csv('../data/MNCAATourneySlots.csv')
-sub_df = pd.read_csv('../submissions/submission_advanced_2026.csv')
+seeds_df = pd.read_csv(os.path.join(DATA_DIR, 'MNCAATourneySeeds.csv'))
+teams_df = pd.read_csv(os.path.join(DATA_DIR, 'MTeams.csv'))
+slots_df = pd.read_csv(os.path.join(DATA_DIR, 'MNCAATourneySlots.csv'))
+sub_df   = pd.read_csv(os.path.join(SUB_DIR,  'submission_advanced_2026_v2.csv'))
 
 # Filter to 2026
 seeds_2026 = seeds_df[seeds_df['Season'] == 2026].set_index('Seed')['TeamID'].to_dict()
@@ -148,5 +154,6 @@ for slot, strong_seed, weak_seed in slots_sorted:
     })
 
 results_df = pd.DataFrame(results)
-results_df.to_csv('../submissions/bracket_2026.csv', index=False)
-print("Bracket saved to submissions/bracket_2026.csv")
+out_path = os.path.join(SUB_DIR, 'bracket_2026_v2.csv')
+results_df.to_csv(out_path, index=False)
+print(f"Bracket saved to {out_path}")
